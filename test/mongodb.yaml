@@ -1,0 +1,21 @@
+services:
+  mongo:
+    image: mongo
+   
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: Admin
+      MONGO_INITDB_ROOT_PASSWORD: Prakash
+
+  mongo-express:
+    image: mongo-express
+   
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: Admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: Prakash
+      ME_CONFIG_MONGODB_URL: "mongodb://Admin:Prakash@mongo:27017/"
